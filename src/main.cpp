@@ -36,11 +36,16 @@ EM_JS(void, FetchKeyboardLayout_JS, (), {
 void UpdateDrawFrame() {
     BeginDrawing();
     ClearBackground(RAYWHITE);
+    // Define colors
+    Color colorW = IsKeyDown(KEY_W) ? GREEN : MAROON;
+    Color colorA = IsKeyDown(KEY_A) ? GREEN : MAROON;
+    Color colorS = IsKeyDown(KEY_S) ? GREEN : MAROON;
+    Color colorD = IsKeyDown(KEY_D) ? GREEN : MAROON;
     DrawText("Current Layout:", 100, 100, 20, DARKGRAY);
-    DrawText(keyW.c_str(), 200, 150, 40, MAROON);
-    DrawText(keyA.c_str(), 150, 200, 40, MAROON);
-    DrawText(keyS.c_str(), 200, 200, 40, MAROON);
-    DrawText(keyD.c_str(), 250, 200, 40, MAROON);
+    DrawText(keyW.c_str(), 200, 150, 40, colorW);
+    DrawText(keyA.c_str(), 150, 200, 40, colorA);
+    DrawText(keyS.c_str(), 200, 200, 40, colorS);
+    DrawText(keyD.c_str(), 250, 200, 40, colorD);
     EndDrawing();
 }
 
