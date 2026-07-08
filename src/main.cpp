@@ -6,11 +6,13 @@
 
 // Global state
 std::string keyW = "W", keyA = "A", keyS = "S", keyD = "D";
+std::string message = "Current Layout (not detected):";
 
 // 1. Export C++ functions so JS can call them
 extern "C" {
     EMSCRIPTEN_KEEPALIVE
     void UpdateKeys(const char* w, const char* a, const char* s, const char* d) {
+        message = "Current Layout (detected):";
         keyW = w; keyA = a; keyS = s; keyD = d;
     }
 }
@@ -41,7 +43,7 @@ void UpdateDrawFrame() {
     Color colorA = IsKeyDown(KEY_A) ? GREEN : MAROON;
     Color colorS = IsKeyDown(KEY_S) ? GREEN : MAROON;
     Color colorD = IsKeyDown(KEY_D) ? GREEN : MAROON;
-    DrawText("Current Layout:", 100, 100, 20, DARKGRAY);
+    DrawText(message.c_str(), 100, 100, 20, DARKGRAY);
     DrawText(keyW.c_str(), 200, 150, 40, colorW);
     DrawText(keyA.c_str(), 150, 200, 40, colorA);
     DrawText(keyS.c_str(), 200, 200, 40, colorS);
